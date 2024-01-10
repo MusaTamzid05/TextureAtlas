@@ -37,6 +37,9 @@ Window::Window(const std::string& title):m_running(false) {
 
     if(!TextureAtlas::get_instance()->load("../resources/atlas.jpg")) 
         std::cerr << "atlas load failed\n";
+
+    TextureAtlas::get_instance()->num_rows = 2;
+    TextureAtlas::get_instance()->total_textures = 4;
     
     
 

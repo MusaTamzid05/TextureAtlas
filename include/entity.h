@@ -17,7 +17,7 @@ struct Entity {
     unsigned int VBO;
     unsigned int EBO;
 
-    int texture_id;
+    int texture_index;
 
     float get_x_offset() const;
     float get_y_offset() const;

@@ -4,7 +4,7 @@
 #include "texture_atlas.h"
 
 
-Entity::Entity():texture_id(0) {
+Entity::Entity():texture_index(0) {
 
 }
 
@@ -28,13 +28,19 @@ float Entity::get_x_offset() const {
     // if we have 10 texture in the texture atlas.
     // first texture is index 0 and laste texture
     // is index 9
+    
 
+    int num_rows = TextureAtlas::get_instance()->num_rows;
+    int col = texture_index % num_rows;
 
-    return 0.0f;
+    return (float) col / num_rows;
 }
 
 
 float Entity::get_y_offset() const {
-    return 0.0f;
+    int num_rows = TextureAtlas::get_instance()->num_rows;
+    int row = texture_index / num_rows;
+
+    return (float) row / num_rows;
 
 }

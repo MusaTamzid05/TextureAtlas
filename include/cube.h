@@ -7,6 +7,8 @@ struct Cube : Entity {
     virtual ~Cube();
 
     void render();
+
+    int texture_id;
 };
 
 #endif

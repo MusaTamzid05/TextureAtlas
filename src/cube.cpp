@@ -76,6 +76,13 @@ Cube::Cube() {
 
 
         m_shader->set_int("texture1", 0);
+
+        m_shader->set_float("numRows", TextureAtlas::get_instance()->num_rows);
+        m_shader->set_vec2("offset", glm::vec2(
+                    get_x_offset(),
+                    get_y_offset()
+                    ));
+
         texture_id = TextureAtlas::get_instance()->id;
 
 
