@@ -2,6 +2,7 @@
 #include "shader.h"
 #include "headers.h"
 #include "camera.h"
+#include "texture_atlas.h"
 #include <vector>
 
 Cube::Cube() {
@@ -62,15 +63,20 @@ Cube::Cube() {
 		// position attribute
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
+
 		// texture coord attribute
-		//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-		//glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+		glEnableVertexAttribArray(1);
 
         glBindVertexArray(0);
 
         m_shader->use();
         glm::mat4 projection = Camera::get_instance()->get_projection();
         m_shader->set_mat4("projection", projection);
+
+
+        m_shader->set_int("texture1", 0);
+        texture_id = TextureAtlas::get_instance()->id;
 
 
 }
@@ -80,6 +86,8 @@ Cube::~Cube() {
 }
 
 void Cube::render() {
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture_id);
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0 ,36);
 

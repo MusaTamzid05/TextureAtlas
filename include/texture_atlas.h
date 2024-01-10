@@ -22,7 +22,7 @@ class TextureAtlas {
         int n_channels;
         unsigned char* data;
 
-        int num_rows;
+        int num_rows; // num rows and cols must be equal
         int total_textures;
 
     private:

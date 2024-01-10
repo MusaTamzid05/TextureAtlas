@@ -5,6 +5,7 @@
 #include "triangle.h"
 #include "cube.h"
 #include "camera.h"
+#include "texture_atlas.h"
 
 
 
@@ -33,11 +34,16 @@ Window::Window(const std::string& title):m_running(false) {
 
 
     glEnable(GL_DEPTH_TEST);
+
+    if(!TextureAtlas::get_instance()->load("../resources/atlas.jpg")) 
+        std::cerr << "atlas load failed\n";
+    
     
 
     m_triangle = new Cube();
     Camera::get_instance()->init(glm::vec3(0.0f, 0.0f, 4.0f));
     first_mouse_move = true;
+
 
 
 }
