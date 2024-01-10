@@ -44,3 +44,15 @@ float Entity::get_y_offset() const {
     return (float) row / num_rows;
 
 }
+
+void Entity::update_texture() {
+    int total_textures = TextureAtlas::get_instance()->total_textures;
+    texture_index = (texture_index + 1) % total_textures;
+    m_shader->use();
+
+    m_shader->set_vec2("offset", glm::vec2(
+                get_x_offset(),
+                get_y_offset()
+                ));
+
+}

@@ -21,6 +21,7 @@ struct Entity {
 
     float get_x_offset() const;
     float get_y_offset() const;
+    void update_texture();
 
 
 };

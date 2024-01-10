@@ -115,6 +115,9 @@ void Window::handle_event(float delta_time) {
 
             if(event.key.code == sf::Keyboard::Down) 
                 Camera::get_instance()->handle_keyboard(Camera::Direction::Down, delta_time);
+
+            if(event.key.code == sf::Keyboard::Enter) 
+                m_triangle->update_texture();
             
 
         }
